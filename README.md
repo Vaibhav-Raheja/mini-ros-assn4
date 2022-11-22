@@ -74,7 +74,7 @@ git clone https://github.com/uiuckimlab/mini-ros-assn4.git
 ## 2) Add CATKIN_IGNORE
 The ros workspace in orangepi cannot `catkin_make` with gazebo related dependencies. Make it ignore the `mini_ros_gazebo` repo by adding an empty CATKIN_IGNORE file.
 ```
-touch ~/ws_mini_assn4/mini_ros_gazebo/CATKIN_IGNORE
+touch ~/ws_mini_assn4/src/mini-ros-assn4/mini_ros_gazebo/CATKIN_IGNORE
 ```
 ```
 cd ~/ws_mini_assn4 && catkin_make
