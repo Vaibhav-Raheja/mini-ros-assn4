@@ -1,4 +1,5 @@
 # ECE598JK Assigment 4 Instructions
+![header](https://user-images.githubusercontent.com/28691260/203191310-a3bbe656-f1bc-4049-a1ed-4a3764509564.png)
 
 For this assignment you will be working in the following files. 
 - `~/ws_mini_assn4/src/mini_ros/scripts/measured_zmp.py`
