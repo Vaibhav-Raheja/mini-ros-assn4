@@ -127,7 +127,7 @@ VScode
 
 ```
 sudo snap install code --classic
-code ~/ws_mini/src/MINI_Upgrade_Kit
+code ~/ws_mini_assn4/src/mini-ros-assn4
 ```
 
 Install dependencies
@@ -148,7 +148,7 @@ pip3 install urdf_parser_py scipy
 ## Analyze data with PlotJuggler
 
 ```
-cd ~/ws_mini && source devel/setup.bash && rosrun plotjuggler plotjuggler
+cd ~/ws_mini_assn4 && source devel/setup.bash && rosrun plotjuggler plotjuggler
 ```
 
 Streaming -> ROS Topic Subscriber -> Add topics of interest
