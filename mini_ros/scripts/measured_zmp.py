@@ -51,6 +51,7 @@ class MINI_Measured_ZMP:
     def RF_FT_sensor_callback(self, msg):
         force = msg.wrench.force
         torque = msg.wrench.torque
+        # fixing sensor axis coord frame
         tx = torque.z
         ty = torque.y
         fx = force.z
@@ -74,6 +75,7 @@ class MINI_Measured_ZMP:
     def LF_FT_sensor_callback(self, msg):
         force = msg.wrench.force
         torque = msg.wrench.torque
+        # fixing sensor axis coord frame
         tx = torque.z
         ty = -torque.y
         fx = force.z
@@ -102,7 +104,7 @@ class MINI_Measured_ZMP:
 
 
         # TODO: Implement measured ZMP equation to solve for both feet px, py 
-        # using provided variables: tx, ty, fx, fy, fz, d
+        # using provided variables: right_zmp.point, left_zmp.point, self.right_force_z, self.left_force_z
         px = 0
         py = 0
         pz = -0.165
