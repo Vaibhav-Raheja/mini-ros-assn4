@@ -20,6 +20,11 @@ mkdir -p ~/ws_mini_assn4/src && cd ~/ws_mini_assn4/src
 git clone https://github.com/uiuckimlab/mini-ros-assn4.git
 ```
 
+Install dependency
+```
+sudo apt-get install ros-noetic-dynamixel-toolbox
+```
+
 Make using catkin and source ros workspace env
 ```
 cd ~/ws_mini_assn4 && catkin_make
@@ -47,7 +52,7 @@ cd ~/ws_mini_assn4 && source devel/setup.bash && roslaunch mini_ros sensors.laun
 
 # ZMP Walking Simulation 
 
-Set `use_sim` to `True` in `walkingParams.yaml`
+Set `is_sim` to `True` in `walkingParams.yaml`
 ## 1) Run zmp walking motion without IMU feedback
 Set all stabilizer gains to 0 in `walkingParams.yaml`
 ```
