@@ -61,8 +61,8 @@ class MINI_Measured_ZMP:
 
         # TODO: Implement measured ZMP equation to solve for right foot px, py 
         # using provided variables: tx, ty, fx, fy, fz, d
-        pRx = 0
-        pRy = 0
+        pRx = (-ty - fz * d) / fx
+        pRy = (tx - fy * d) / fx
 
         self.right_force_z = fz
         self.right_zmp_point.header.stamp = rospy.Time.now()
@@ -84,9 +84,9 @@ class MINI_Measured_ZMP:
         d = 0.03
 
         # TODO: Implement measured ZMP equation to solve for left foot px, py 
-        # using provided variables: tx, ty, fx, fy, fz, d
-        pLx = 0
-        pLy = 0
+        # using provided variables: tx, ty, fx, fy, fz, d4
+        pLx = (-ty - fz * d) / fx
+        pLy = (tx - fy * d) / fx
         
         self.left_force_z = fz
         self.left_zmp_point.header.stamp = rospy.Time.now()
@@ -105,8 +105,11 @@ class MINI_Measured_ZMP:
 
         # TODO: Implement measured ZMP equation to solve for both feet px, py 
         # using provided variables: right_zmp.point, left_zmp.point, self.right_force_z, self.left_force_z
-        px = 0
-        py = 0
+        px_both = (right_zmp.point.z * self.right_force_z + left_zmp.point.z * self.left_force_z) / (self.right_force_z + self.left_force_z)
+        py_both = (right_zmp.point.y * self.right_force_z + left_zmp.point.y * self.left_force_z) / (self.right_force_z + self.left_force_z)
+
+        px = px_both
+        py = py_both
         pz = -0.165
 
         queue_len = 200

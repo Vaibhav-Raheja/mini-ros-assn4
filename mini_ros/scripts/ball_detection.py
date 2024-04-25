@@ -47,8 +47,26 @@ class BallDetector:
         Reference tutorial below to learn more about blob detection and its parameters.
         https://learnopencv.com/blob-detection-using-opencv-python-c/
         '''
+
+        # Setup SimpleBlobDetector parameters.
+        params = cv2.SimpleBlobDetector_Params()
+        params.minThreshold = 10
+        params.maxThreshold = 200
+        params.filterByArea = True
+        params.minArea = 5 # Minimum area in pixels
+        # params.maxArea = 2000  # Maximum area in pixels
+        params.filterByCircularity = True
+        params.minCircularity = 0.7
+        params.filterByConvexity = True
+        params.minConvexity = 0.8
+        params.filterByInertia = True
+        params.minInertiaRatio = 0.5
+
+        # Set up the detector with default parameters.
+        detector = cv2.SimpleBlobDetector_create(params)
+
         # Detect blobs.
-        keypoints = None
+        keypoints = detector.detect(im)
 
         if keypoints and (len(keypoints) > 0) :
 

@@ -40,8 +40,9 @@ class MINI_Approx_ZMP_Single_Mass:
 
         # TODO: Implement multi mass ZMP equation to solve for px, py 
         # using provided variables: x_pos, y_pos, z_pos, x_accl, y_accl, z_accl, g, pz
-        px = 0
-        py = 0
+        px = (x_pos * z_accl - pz * x_accl) / (z_accl + g)
+        py = (y_pos * z_accl - pz * y_accl) / (z_accl + g)
+
 
         return px, py
 

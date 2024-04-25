@@ -6,16 +6,16 @@
      # Step parameters
      x_size: 20 # step x size (stride size)
      y_size: 30 # step y size (foot y-distance from the body center)
-     n_step: 6   # Always Even number
+     n_step: 26   # Always Even number
      z_h: 8.0 # Foot lifting height
      
-     t_step: 1.5 # Step Size
-     ds_time: 1.0 # Double support phase ratio, (double support phase time)/ (step_time)   range: 0 ~ 1.0
+     t_step: 1 # Step Size
+     ds_time: 0.25 # Double support phase ratio, (double support phase time)/ (step_time)   range: 0 ~ 1.0
 
      # Stabilizer Gain
-     pitch_ankle_gain: 0 # IMU orientation to ankle pitch angle feedback
-     roll_ankle_gain: 0 # IMU orientation to ankle roll angle feedback
-     pitch_disp_gain: 0 # IMU orientation to torso x direction feedback
-     roll_disp_gain: 0 # IMU orientation to torso y direction feedback
+     pitch_ankle_gain: 0 # IMU orientation to ankle pitch angle feedback −0.1 < pitch ankle gain < 0,
+     roll_ankle_gain: 0 # IMU orientation to ankle roll angle feedback −0.1 < roll ankle gain < 0,
+     pitch_disp_gain: 0  # IMU orientation to torso x direction feedback  
+     roll_disp_gain: 3.5 # IMU orientation to torso y direction feedback  0 < roll disp gain < 50,
      ax_gain: 0 # x direction acceleration feedback
-     ay_gain: 0 # y direction acceleration feedback
+     ay_gain: 0 # y direction acceleration feedback 0 < ay gain < 5.0

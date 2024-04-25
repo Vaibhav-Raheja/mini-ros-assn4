@@ -72,7 +72,8 @@ class MINI_Approx_ZMP_Multi_Mass:
         queue_len = 200
 
         while not rospy.is_shutdown():
-
+            px =0
+            py = 0
             px_sum = 0
             py_sum = 0
             denom_sum = 0
@@ -145,24 +146,28 @@ class MINI_Approx_ZMP_Multi_Mass:
 
                         # TODO: Implement multi mass ZMP equation to solve for px, py 
                         # using provided variables: m, x, y, z, x_ddot, y_ddot, z_ddot
-                        px_sum += 0
-                        py_sum += 0
-                        denom_sum += 0
+                        px_i_term = m * ((x_ddot + g) * z - (z_ddot + g) * x)
+                        py_i_term = m * ((y_ddot + g) * z - (z_ddot + g) * y)
+                        denom_i_term = m * (z_ddot + g)
+
+                        px_sum += px_i_term
+                        py_sum += py_i_term
+                        denom_sum += denom_i_term
 
                 except tf2_ros.TransformException as err:
                     rospy.logerr("TF error in COM computation %s", err)
     
-                if denom_sum != 0:
-                    # TODO: Implement multi mass ZMP equation to solve for px, py 
-                    # using provided variables: m, x, y, z, x_ddot, y_ddot, z_ddot
-                    px = 0
-                    py = 0
+            if denom_sum != 0:
+                # TODO: Implement multi mass ZMP equation to solve for px, py 
+                # using provided variables: m, x, y, z, x_ddot, y_ddot, z_ddot
+                px = px_sum / denom_sum
+                py = py_sum / denom_sum
 
-                    self.marker.pose.position.x = px
-                    self.marker.pose.position.y = py
-                    self.marker.pose.position.z = -0.165
-                    self.marker.header.stamp = rospy.Time.now()
-                    pub.publish(self.marker)
+            self.marker.pose.position.x = px
+            self.marker.pose.position.y = py
+            self.marker.pose.position.z = -0.165
+            self.marker.header.stamp = rospy.Time.now()
+            pub.publish(self.marker)
 
             try:
                 rate.sleep()
